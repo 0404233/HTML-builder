@@ -10,9 +10,9 @@ fs.readdir(folder, {withFileTypes: true}, (err, data) => {
       const name = e.name;
       const ext = path.extname(folder + name);
       fs.stat(path.join(folder, name), (err, stats) => {
-        const size = stats.size + 'kb';
+        const size = stats.size + 'b';
 
-        process.stdout.write(`${name} - ${ext} - ${size}\n`);
+        process.stdout.write(`${name.split('.')[0]} - ${ext.slice(1)} - ${size}\n`);
       });
     }
   })
