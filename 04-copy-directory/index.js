@@ -23,8 +23,17 @@ function copyFiles() {
   });
 }
 
+fsPromises.mkdir(folderCopy).then(function() {
+  copyFiles();
+}).catch(() => {
+  copyFiles();
+})
+
+
 fs.readdir(folderCopy, (err, data) => {
-  if (err) throw err;
+  if (err) {
+    copyFiles();
+  };
 
   data.forEach(e => {
   
@@ -39,10 +48,4 @@ fs.readdir(folderCopy, (err, data) => {
       }
     })
   })
-})
-
-fsPromises.mkdir(folderCopy).then(() => {
-  copyFiles();
-}).catch(() => {
-  copyFiles();
 })
