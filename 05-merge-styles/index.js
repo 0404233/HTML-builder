@@ -45,6 +45,4 @@ fs.readdir(stylesFolder, {withFileTypes: true}, (err, data) => {
       }
     }
   })
-
-
 })
