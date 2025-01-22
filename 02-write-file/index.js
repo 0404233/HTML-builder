@@ -31,7 +31,7 @@ writeFileAsync(pathToFile, '')
   .then(() => {
     process.stdout.write('File is created! \n');
     process.stdin.on('data', (data) => {
-      if (data.toString().trim() === '.exit') {
+      if (data.toString().trim() === 'exit') {
         exit();
       }
       appendFileAsync(pathToFile, data)
